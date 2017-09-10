@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="IIS"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">IIS</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-16</span>
+            <span class="time">11:14:04</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/windowserver/">#windowserver</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>简要记录下了Windows Server2008下的IIS安装<br>虽说服务器系统还是Linux系统占优势，但抵挡不住强大的微软爸爸召唤，简单试水Windows服务系统。<br>首先了解几个网络术语概念</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h1><h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><ul>
+<li>IP层接收由更低层（网络接口层例如以太网设备驱动程序）发来的数据包，并把该数据包发送到更高层—TCP或UDP层；相反，IP层也把从TCP或UDP层接收来的数据包传送到更低层。IP数据包是不可靠的，因为IP并没有做任何事情来确认数据包是否按顺序发送的或者有没有被破坏，IP数据包中含有发送它的主机的地址和接收它的主机的地址。<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2></li>
+<li>TCP是面向连接的通信协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接的所以只能用于端到端的通讯。</li>
+<li>TCP提供的是一种可靠的数据流服务，采用“带重传的肯定确认”技术来实现传输的可靠性。TCP还采用一种称为“滑动窗口”的方式进行流量控制，所谓窗口实际表示接收能力，用以限制发送方的发送速度。</li>
+<li>如果IP数据包中有已经封好的TCP数据包，那么IP将把它们向‘上’传送到TCP层。TCP将包排序并进行错误检查，同时实现虚电路间的连接。TCP数据包中包括序号和确认，所以未按照顺序收到的包可以被排序，而损坏的包可以被重传。</li>
+<li>TCP将它的信息送到更高层的应用程序，例如Telnet的服务程序和客户程序。应用程序轮流将信息送回TCP层，TCP层便将它们向下传送到IP层，设备驱动程序和物理介质，最后到接收方。</li>
+</ul>
+<hr>
+<!--more-->
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><ul>
+<li>DNS，因特网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过主机名，最终得到该主机名对应的IP地址的过程叫做域名解析</li>
+</ul>
+<hr>
+<h1 id="1-配置静态IP"><a href="#1-配置静态IP" class="headerlink" title="1.配置静态IP"></a>1.配置静态IP</h1><h2 id="如图"><a href="#如图" class="headerlink" title="如图"></a>如图</h2><ul>
+<li><img src="http://i.imgur.com/1ucx07o.png" alt=""><h2 id="已可正常上网"><a href="#已可正常上网" class="headerlink" title="已可正常上网"></a>已可正常上网</h2></li>
+<li><img src="http://i.imgur.com/BOZWK7a.png" alt=""></li>
+</ul>
+<hr>
+<h1 id="2-配置服务器"><a href="#2-配置服务器" class="headerlink" title="2.配置服务器"></a>2.配置服务器</h1><h2 id="添加IIS服务"><a href="#添加IIS服务" class="headerlink" title="添加IIS服务"></a>添加IIS服务</h2><ul>
+<li><img src="http://i.imgur.com/jij2TKr.png" alt=""><h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2></li>
+<li><img src="http://i.imgur.com/Qq8mj3C.png" alt=""><h2 id="下一步-1"><a href="#下一步-1" class="headerlink" title="下一步"></a>下一步</h2></li>
+<li><img src="http://i.imgur.com/ZkLJHVr.png" alt=""><h2 id="打开浏览器可见欢迎页"><a href="#打开浏览器可见欢迎页" class="headerlink" title="打开浏览器可见欢迎页"></a>打开浏览器可见欢迎页</h2></li>
+<li><img src="http://i.imgur.com/RqpnFGO.png" alt=""></li>
+</ul>
+<hr>
+<h1 id="3-修改主页"><a href="#3-修改主页" class="headerlink" title="3.修改主页"></a>3.修改主页</h1><h2 id="新建index-html文件"><a href="#新建index-html文件" class="headerlink" title="新建index.html文件"></a>新建index.html文件</h2><ul>
+<li><img src="http://i.imgur.com/mfPH9nl.png" alt=""><h2 id="打开localhost"><a href="#打开localhost" class="headerlink" title="打开localhost"></a>打开localhost</h2></li>
+<li><img src="http://i.imgur.com/nSydx6g.png" alt=""></li>
+</ul>
+<hr>
+<h1 id="4-DNS服务器配置"><a href="#4-DNS服务器配置" class="headerlink" title="4.DNS服务器配置"></a>4.DNS服务器配置</h1><h2 id="选择DNS服务器"><a href="#选择DNS服务器" class="headerlink" title="选择DNS服务器"></a>选择DNS服务器</h2><ul>
+<li><img src="http://i.imgur.com/S1rxsS9.png" alt=""><h2 id="下一步-2"><a href="#下一步-2" class="headerlink" title="下一步"></a>下一步</h2></li>
+<li><img src="http://i.imgur.com/lXm5Pu3.png" alt=""><h2 id="打开工具中DNS并进行配置DNS"><a href="#打开工具中DNS并进行配置DNS" class="headerlink" title="打开工具中DNS并进行配置DNS"></a>打开工具中DNS并进行配置DNS</h2></li>
+<li><img src="http://i.imgur.com/rqJFCzH.png" alt=""><h2 id="下一步-3"><a href="#下一步-3" class="headerlink" title="下一步"></a>下一步</h2></li>
+<li><img src="http://i.imgur.com/CkxaEEl.png" alt=""><h2 id="DNS服务器配置完成"><a href="#DNS服务器配置完成" class="headerlink" title="DNS服务器配置完成"></a>DNS服务器配置完成</h2></li>
+<li><img src="http://i.imgur.com/auT76mS.png" alt=""><h2 id="绑定域名IP"><a href="#绑定域名IP" class="headerlink" title="绑定域名IP"></a>绑定域名IP</h2></li>
+<li><img src="http://i.imgur.com/IcpzXTg.png" alt=""></li>
+<li><img src="http://i.imgur.com/x289HCB.png" alt=""><h2 id="修改本机DNS地址"><a href="#修改本机DNS地址" class="headerlink" title="修改本机DNS地址"></a>修改本机DNS地址</h2></li>
+<li><img src="http://i.imgur.com/z5VWYhj.png" alt=""><h2 id="已成功"><a href="#已成功" class="headerlink" title="已成功"></a>已成功</h2></li>
+<li><img src="http://i.imgur.com/HNBBAcw.png" alt=""></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

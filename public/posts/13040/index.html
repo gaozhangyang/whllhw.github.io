@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="腾讯云主机相关的iptables使用端口转发"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">腾讯云主机相关的iptables使用端口转发</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-06-23</span>
+            <span class="time">11:14:04</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/linux-iptables/">#linux,iptables</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="腾讯云主机相关的iptables使用端口转发"><a href="#腾讯云主机相关的iptables使用端口转发" class="headerlink" title="腾讯云主机相关的iptables使用端口转发"></a>腾讯云主机相关的iptables使用端口转发</h1><blockquote>
+<p>阿里云、腾讯云的主机都是只有内网IP网卡，用户不能使用公网IP网卡，因此直接在iptables上进行开放端口是不行的。</p>
+</blockquote>
+<a id="more"></a>
+<p>在使用ngrok进行内穿透时，笔者发现无法连接到指定端口，于是去iptables放通该端口，使用<figure class="highlight"><figcaption><span>-v -w 10 -z intmain.me 6060``` 出现超时错误， ```time out :Operation now in progress``` 但我用其来试探80端口时显示连接成功。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">1. **腾讯安全组，放通该端口** 。（默认安全组放通全部端口不安全，这个坑一直没发现，郁闷了好久）</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">```shell</div><div class="line">	$ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 6060 -j ACCEPT</div><div class="line">	$ service iptables save</div><div class="line">	$service iptables restart</div></pre></td></tr></table></figure></p>
+<p>这样就放通了6060端口，在外部可以进行访问了。<br>端口转发可以实现</p>
+<ul>
+<li>一台机到另一台机端口</li>
+<li>转发本机端口的转发（相当于端口引用）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 首先启用端口转发</div><div class="line">$ echo 1 &gt; /proc/sys/net/ipv4/ip_forward</div><div class="line"># 或者修改 /etc/sysctl.conf ,使net.ipv4.ip_forward = 1 ,sysctl -p</div></pre></td></tr></table></figure>
+<p>参考链接：<br><a href="http://blog.csdn.net/zzhongcy/article/details/42738285" target="_blank" rel="external">linux下用iptables转发本地端口</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

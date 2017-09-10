@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="LNMP,SAMBA"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">LNMP,SAMBA</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-16</span>
+            <span class="time">11:14:04</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/ubuntu-lnmp-samba/">#ubuntu,lnmp,samba</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>简要记录下了ubuntu下LNMP服务器的安装，samba文件共享的配置</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="配置LNMP"><a href="#配置LNMP" class="headerlink" title="配置LNMP"></a>配置LNMP</h1><hr>
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ul>
+<li>1.执行源更新：<code>sudo apt-get update</code></li>
+<li>2.获取Nginx：<code>sudo apt-get install nginx</code></li>
+<li>3.浏览器打开：<code>202.197.75.58</code></li>
+<li>出现如图即为安装成功！</li>
+<li><img src="http://i.imgur.com/v4Vb7b4.png" alt=""></li>
+</ul>
+<hr>
+<h1 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h1><ul>
+<li>1.执行<code>sudo nano /etc/nginx/sites-available/default</code></li>
+<li>2.获取对php的支持更改如下：</li>
+<li><img src="http://i.imgur.com/lGrrDVu.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li><img src="http://i.imgur.com/PvPYrbF.png" alt=""></li>
+</ul>
+<hr>
+<!--more-->
+<p>#安装MySQL</p>
+<ul>
+<li>1.获取Mysql：<code>sudo apt-get install mysql-server</code></li>
+<li>2.安全配置：<code>sudo mysql_secure_installation</code></li>
+</ul>
+<hr>
+<h1 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h1><ul>
+<li>1.获取php-fastproessmanage：<code>sudo apt-get insatll php7.0-fpm</code></li>
+<li>2.获取php对mysql的支持：<code>sudo apt-get install php7.0-sql</code></li>
+<li>3.获得php其他软件：<code>sudo apt-get install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc</code></li>
+</ul>
+<hr>
+<ul>
+<li><img src="http://i.imgur.com/5kpBLSQ.png" alt=""></li>
+</ul>
+<hr>
+<h1 id="配置php安全"><a href="#配置php安全" class="headerlink" title="配置php安全"></a>配置php安全</h1><ul>
+<li>1.执行<code>sudo nano /etc/php/7.0/fpm/php.ini</code></li>
+<li>2.修改<code>cgi.fix_pathinfo=0</code>避免安全漏洞</li>
+</ul>
+<hr>
+<h1 id="MySQL配置"><a href="#MySQL配置" class="headerlink" title="MySQL配置"></a>MySQL配置</h1><ul>
+<li>1.执行进入后台：<code>mysql -u root -p</code></li>
+<li><img src="http://i.imgur.com/qzyAhqg.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>2.创建数据库：<code>CREATE DATABASE wordpress;</code></li>
+<li><img src="http://i.imgur.com/0yyOe41.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>3.进入wordpress后台安装</li>
+<li><img src="http://i.imgur.com/EO5DzIy.png" alt=""></li>
+<li>4.安装完成后即可登录网站后台写博客</li>
+</ul>
+<hr>
+<h1 id="samba文件共享"><a href="#samba文件共享" class="headerlink" title="samba文件共享"></a>samba文件共享</h1><ul>
+<li>1.安装samba：<code>sudo apt-get install samba</code></li>
+<li>2.配置samba：<code>sudo nano /etc/samba/smb.conf</code></li>
+<li><img src="http://i.imgur.com/xHwolcN.png" alt=""></li>
+<li><img src="http://i.imgur.com/BCnueuW.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>3.重启服务：<code>service smbd restart</code></li>
+<li><code>service nmbd restart</code></li>
+<li>4.添加用户，并键入密码：<code>smbpasswd -a lhw</code></li>
+<li><img src="http://i.imgur.com/6glZMQa.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>5.在win下可以访问：</li>
+<li><img src="http://i.imgur.com/gYAZwQQ.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li><img src="http://i.imgur.com/Lqhuu7F.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>6.新建一个netgroup用户组<code>groupadd netgroup</code></li>
+<li>7.添加用户<code>useradd a(b,c) -g netgroup</code></li>
+<li><img src="http://i.imgur.com/rCMN1uN.png" alt=""></li>
+<li>8.分别创建密码：<code>passwd a</code></li>
+<li><img src="http://i.imgur.com/l830zTJ.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>9.将smb文件夹归属改变：<code>sudo chown c:netgroup smb</code></li>
+<li><img src="http://i.imgur.com/rdn2miL.png" alt=""></li>
+<li>10.分别设置smbpasswd：<code>smbpasswd -a a</code></li>
+<li><img src="http://i.imgur.com/eGIDa0h.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>11.配置smb，添加字段：</li>
+<li><img src="http://i.imgur.com/tKfYGgO.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>12.使用a登录，发现无法上传文件，删除文件。</li>
+<li><img src="http://i.imgur.com/fa1PWeD.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>13.使用c登录则可以上传文件：</li>
+<li><img src="http://i.imgur.com/Mn4KEPd.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li><img src="http://i.imgur.com/J4rh8oF.png" alt=""></li>
+</ul>
+<hr>
+<h1 id="shell-script"><a href="#shell-script" class="headerlink" title="shell script"></a>shell script</h1><ul>
+<li>1.打印登录用户，工作目录：</li>
+<li><img src="http://i.imgur.com/ZSoIzKz.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>2.计算从1+2+3+….+100，结果显示在屏幕上且重定向到result.log</li>
+<li><img src="http://i.imgur.com/Ew9ae0F.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>3.程序的文件名,共有几个参数,若参数的个数小于3个，则输出“the parameter is less than 3“”并退出,显示第二个参数。</li>
+<li><img src="http://i.imgur.com/ChObg5t.png" alt=""></li>
+</ul>
+<hr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

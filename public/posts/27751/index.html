@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="wxPython的坑，textctrl回车事件处理"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">wxPython的坑，textctrl回车事件处理</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-03-30</span>
+            <span class="time">11:14:04</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/python/">#python</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p><em>学习Python的GUI界面绘制，对比PyQt，wxPython的区别，选择了wxPython的路径。</em> 为一个小程序，实现网络聊天室的效果，简要写写其界面，毕竟只用终端界面容易出现冲突。</p>
+<p>我参考的是这个<br><a href="http://zetcode.com/wxpython/firststeps/" target="_blank" rel="external">快速入门教程</a></p>
+</blockquote>
+<h1 id="到正题了————"><a href="#到正题了————" class="headerlink" title="到正题了————>"></a>到正题了————></h1><p>实现功能为：按下回车，发送信息到服务器，并广播到各个客户端。</p>
+<p><strong>BUG</strong>：wxPython消息处理机制会先处理按下ENTER键的事件，而不是先执行回车。</p>
+<a id="more"></a>
+<p><img src="https://intmain.me/images/sp170330_152238.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">OnEnter</span><span class="params">(self,e)</span>:</span></div><div class="line">	self.out.WriteText(<span class="string">'\n&lt;localhost&gt;'</span> + \</div><div class="line">		self.text.GetValue())</div><div class="line">	self.text.Clear()</div></pre></td></tr></table></figure>
+<p>处理后会多出空格。就像这样：<br><img src="https://intmain.me/images/sp170330_152834.png" alt=""><br>在网上查解决方法，找不到。小型库使用者少（还是我弱鸡）</p>
+<p>突然看到还可以绑定事件 wx.EVT_TEXT 来检测输入的内容。于是再绑定一个清除回车的消息不就可以了。<br><img src="https://intmain.me/images/sp170330_152523.png" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">self.Bind(wx.EVT_TEXT,self.replaceEnter,self.text)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">replaceEnter</span><span class="params">(self,e)</span>:</span></div><div class="line">	<span class="keyword">if</span> <span class="string">'\\n'</span> <span class="keyword">in</span> self.text.GetValue():</div><div class="line">		self.text.Clear()</div></pre></td></tr></table></figure></p>
+<p>最后，完美解决~</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

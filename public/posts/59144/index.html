@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="VMware vSphere Hypervisor (ESXi)虚拟化使用笔记"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">VMware vSphere Hypervisor (ESXi)虚拟化使用笔记</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-02-17</span>
+            <span class="time">11:14:04</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/VMware/">#VMware</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="VMware-vSphere-Hypervisor-ESXi-虚拟化使用"><a href="#VMware-vSphere-Hypervisor-ESXi-虚拟化使用" class="headerlink" title="VMware vSphere Hypervisor (ESXi)虚拟化使用"></a>VMware vSphere Hypervisor (ESXi)虚拟化使用</h1><a id="more"></a>
+<hr>
+<h2 id="一、获取VMware-vSphere-Hypervisor-ESXi"><a href="#一、获取VMware-vSphere-Hypervisor-ESXi" class="headerlink" title="一、获取VMware vSphere Hypervisor (ESXi)"></a>一、获取VMware vSphere Hypervisor (ESXi)</h2><p><a href="https://my.vmware.com/cn/web/vmware/downloads" target="_blank" rel="external">官网下载地址</a>下载ESXi以及管理工具<em>VMware vSphere</em></p>
+<hr>
+<h2 id="二、安装ESXi"><a href="#二、安装ESXi" class="headerlink" title="二、安装ESXi"></a>二、安装ESXi</h2><p>注意：会清除数据并重新分区，注意资料备份</p>
+<hr>
+<h2 id="三、配置网络"><a href="#三、配置网络" class="headerlink" title="三、配置网络"></a>三、配置网络</h2><p>设置静态IP、DNS</p>
+<hr>
+<h2 id="四、登录管理ESXi"><a href="#四、登录管理ESXi" class="headerlink" title="四、登录管理ESXi"></a>四、登录管理ESXi</h2><p>可选<strong>VMware Host Client</strong>登录，或者<strong>vSphere Client for Windows</strong></p>
+<ol>
+<li><a href="https://主机IP，即可进入VMware" target="_blank" rel="external">https://主机IP，即可进入VMware</a> Host Client</li>
+<li>添加虚拟机，或者 部署OVF快速生成虚拟机</li>
+<li>添加系统光碟（Linux，Windows）</li>
+<li>启动安装程序</li>
+</ol>
+<hr>
+<h2 id="五、添加用户并登录虚拟机"><a href="#五、添加用户并登录虚拟机" class="headerlink" title="五、添加用户并登录虚拟机"></a>五、添加用户并登录虚拟机</h2><p>登录客户机需要在VMware Player，VMware workstation 里连接服务器，使用账户登录，添加权限不同的用户方便管理。</p>
+<p><strong>对密码长度有严格的要求</strong></p>
+<hr>
+<h2 id="六、获得官方的授权密钥"><a href="#六、获得官方的授权密钥" class="headerlink" title="六、获得官方的授权密钥"></a>六、获得官方的授权密钥</h2><hr>
+<h1 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h1><h2 id="ntf41client-load-faided"><a href="#ntf41client-load-faided" class="headerlink" title="ntf41client load faided"></a>ntf41client load faided</h2><p>安装过程中提示No network adapters，无法继续安装。网卡驱动缺失造成的。</p>
+<blockquote>
+<p><a href="http://blog.bossma.cn/server/pc-install-esxi-5-5-two-problem-solution/" target="_blank" rel="external"> “解决方案”</a></p>
+</blockquote>
+<ol>
+<li>下载网卡驱动</li>
+<li>驱动打包工具ESXi-Customizer制作新的iso文件<h2 id="调用对象-“ha-datastoresystem”的“HostDatastoreSystem-QueryVmfsDatastoreCreateOptions”。添加datastore出错"><a href="#调用对象-“ha-datastoresystem”的“HostDatastoreSystem-QueryVmfsDatastoreCreateOptions”。添加datastore出错" class="headerlink" title="调用对象 “ha-datastoresystem”的“HostDatastoreSystem.QueryVmfsDatastoreCreateOptions”。添加datastore出错"></a>调用对象 “ha-datastoresystem”的“HostDatastoreSystem.QueryVmfsDatastoreCreateOptions”。添加datastore出错</h2>安装完成后没有数据储存，无法建立虚拟机，添加datastore提示<strong>“HostDatastoreSystem.QueryVmfsDatastoreCreateOptions” for object “ha-datastoresystem” on ESXi “xxx.xxx.xxx.xx″ failed</strong><blockquote>
+<p><a href="http://blog.sina.com.cn/s/blog_666e9239010149ju.html" target="_blank" rel="external">参考博客</a><br><a href="http://www.ithao123.cn/content-10321943.html" target="_blank" rel="external">参考2</a><br><a href="https://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&amp;externalId=1008886" target="_blank" rel="external">官方解答</a></p>
+</blockquote>
+</li>
+</ol>
+<p>原因分析：</p>
+<ol>
+<li>LUN空间大小超过2TB。</li>
+<li>这个LUN之前作为RDM裸设备映射。</li>
+<li>LUN包含一个GPT分区，不能被清除。</li>
+</ol>
+<p>未在实体机上解决。</p>
+<hr>
+<blockquote>
+<p>参考链接：<a href="http://dngood.blog.51cto.com/446195/1123097" target="_blank" rel="external">家用PC机打造VSphere5.1 测试环境</a></p>
+</blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

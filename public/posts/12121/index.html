@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="LINUX"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">LINUX</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-16</span>
+            <span class="time">11:14:04</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Ubuntu/">#Ubuntu</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>简要记录下了linux下的文件分布<br>Linux下无限权限的斗争，无限的坑</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>/bin 存放必要的命令 </li>
+<li>/boot 存放内核以及启动所需的文件等 </li>
+<li>/dev 存放设备文件 </li>
+<li>/etc 存放系统的配置文件 </li>
+<li>/home 用户文件的主目录，用户数据存放在其主目录中 </li>
+<li>/lib 存放必要的运行库 <!--more--></li>
+<li>/media 放置可以移除的设备</li>
+<li>/mnt 存放临时的映射文件系统，我们常把软驱和光驱挂装在这里的floppy和cdrom子目录下。 </li>
+<li>/opt 安装用户自己的软件，方便调试</li>
+<li>/proc 存放存储进程和系统信息 </li>
+<li>/root 超级用户的主目录 </li>
+<li>/sbin 存放系统管理程序 </li>
+<li>/tmp 存放临时文件的目录 </li>
+<li>/usr 包含了一般不需要修改的应用程序，命令程序文件、程序库、手册和其它文档。 </li>
+<li>/var 包含系统产生的经常变化的文件，一些应用程序的数据文件。</li>
+</ul>
+<hr>
+<ul>
+<li>所有用户皆可用的系统程序放在/bin</li>
+<li>超级用户才能使用的系统程序放在/sbin</li>
+<li>所有用户都可用的应用程序放在/usr/bin</li>
+<li>超级用户才能使用的应用程序放在/usr/sbin</li>
+<li>所有用户都可用的与本地机器无关的程序存放在/usr/local/bin</li>
+<li>超级用户才能使用的与本地机器无关的程序存放在/usr/local/sbin</li>
+</ul>
+<hr>
+<p><img src="http://i.imgur.com/X96p5GQ.png" alt=""></p>
+<ul>
+<li>第一字符表示：目录（d）,文件（-）还是链接文件（l）</li>
+<li>后每三个字符为一组分别表示“文件所有者”“通用户组”“非本用户组”</li>
+<li>r=4，w=2，x=1 read writre x=run</li>
+<li>777：rwxrwxrwx    <em>三组都有权读写运行</em></li>
+<li>755：rwxr-xr-x<em>只有ower有权写</em></li>
+<li>655：rw-r-xr-x<em>ower无权运行,其他组无权写</em></li>
+<li>450：r—xr—<em>ower只可以读，通用户组可运行，其他组则无权做任何事</em></li>
+<li>rwxrwxrwx=777</li>
+<li>rwxr-xr-x=755</li>
+<li>r–r–r–=444<em>都只可读</em></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
