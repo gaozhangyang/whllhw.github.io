@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="shell script"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">shell script</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-16</span>
+            <span class="time">17:15:16</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/shell/">#shell</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>简要记录下了三个sh脚本学习</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h2 id="自动按时间建立脚本文件"><a href="#自动按时间建立脚本文件" class="headerlink" title="自动按时间建立脚本文件"></a>自动按时间建立脚本文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash //指定解释器</div><div class="line">if [[ -z &quot;$1&quot; ]];then //如果参数1非空则</div><div class="line">   newfile=~/newscript_`date +%m%d_%S`</div><div class="line">//newfile=~/newscript_日期+月日秒 这里先执行“`date +%m%d_%S`”结果作为外部的输入信息</div><div class="line">else</div><div class="line">   newfile=$1 //文件名为参数</div><div class="line">fi //if结束</div><div class="line">if  ! grep &quot;^#!&quot; $newfile &amp;&gt;/dev/null; then</div><div class="line">//如果非  newfile里一开始有#（屏幕不显示出来（送入黑洞））</div><div class="line">cat &gt;&gt; $newfile &lt;&lt; EOF//将标准输入（追加）给newfile，EOF为退出编辑状态</div></pre></td></tr></table></figure>
+<hr>
+<!--more-->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash//指定解释器</div><div class="line"></div><div class="line"># Author: Inert Your Name here.</div><div class="line"></div><div class="line">#Date &amp; Time: `date +&quot;%F %T&quot;`</div><div class="line"></div><div class="line">#Description: Please Edit here.</div><div class="line"></div><div class="line">EOF//结束输入</div><div class="line"></div><div class="line">fi//如果结束</div><div class="line"></div><div class="line">vim +5 $newfile//向下移动5行，以便输入</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="指定用户是否在系统中注册"><a href="#指定用户是否在系统中注册" class="headerlink" title="指定用户是否在系统中注册"></a>指定用户是否在系统中注册</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash //指定解释器</div><div class="line"></div><div class="line">read –p &quot;please input a username:&quot;  USER//使用提示符输入并保存在USER里</div><div class="line"></div><div class="line">if cut –d：-f1  /etc/passwd | grep &quot;^$USER$&quot; &amp;&gt; /dev/null ;then//如果 取出/ect/passwd(:为分割字符) 有USER的内容 （不显示出来） </div><div class="line"></div><div class="line">MYBASH=`grep  &quot;^$USER:&quot;  /etc/passwd | cut –d :  -f7`//找出文件里第7个字段</div><div class="line"></div><div class="line">echo &quot;$&#123;USER&#125;&apos;s shell is $MYBASH&quot;//显示USER的shell路径</div><div class="line"></div><div class="line">else</div><div class="line"></div><div class="line">  echo &quot;$USER not exists.&quot;//USER不存在</div><div class="line"></div><div class="line">  exit  4//退出</div><div class="line"></div><div class="line">fi</div></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

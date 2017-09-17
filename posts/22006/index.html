@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="使用Flask 中遇到的Python2 编码问题"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">使用Flask 中遇到的Python2 编码问题</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-17</span>
+            <span class="time">17:15:15</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/flask-python/">#flask,python</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="使用Flask-中遇到的Python2-编码问题"><a href="#使用Flask-中遇到的Python2-编码问题" class="headerlink" title="使用Flask 中遇到的Python2 编码问题"></a>使用Flask 中遇到的Python2 编码问题</h1><blockquote>
+<p> python2 的编码问题一直被开发者诟病，进行一些字符工作是确实会有点麻烦，而且新手不熟悉编码，更会踩坑里。</p>
+</blockquote>
+<p>开始前建议阅读 <a href="http://selfboot.cn/2016/12/28/py_encode_decode/" target="_blank" rel="external">Python2.x 字符编码终极指南</a>，或者搜索一下就有很多文章。</p>
+<p>Python2 中的 str 类型可以看做是 byte 类型的数组，即是字节流。早期设计中并没有这么多的编码，后来版本提供一个 unicode类型来修复了这一类型。有如下关系</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">unicode.encode(<span class="string">'utf-8'</span>) = str</div><div class="line">str.decode(<span class="string">'utf-8'</span>) = unicode</div></pre></td></tr></table></figure>
+<p>Flask 中提交的表单 + MySQLdb + Mysql</p>
+<ol>
+<li>源文件中指明编码 #coding=utf-8</li>
+<li>Mysql设置编码为utf8 </li>
+<li>MySQLdb 连接指定charset=’utf8’，插入的代码如下</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g.db.execute(<span class="string">'insert into entries (title, text) values (&#123;&#125;, &#123;&#125;)'</span>.format(request.form[<span class="string">'title'</span>].encode(<span class="string">'utf-8'</span>), request.form[<span class="string">'text'</span>].encode(<span class="string">'utf-8'</span>)))</div></pre></td></tr></table></figure>
+<p>​    request.form[‘title’] 的类型是Unicode，encode后应该就可以变成str了，可是</p>
+<p>提示<code>OperationalError: (1054, &quot;Unknown column &#39;abc&#39; in &#39;field list&#39;&quot;)</code>英文都插入不了，然后经Stack Overflow启发，改动 { } =&gt; “{ }”，然后就可以运行了。。坑死了。</p>
+<p>还有一个坑：<code>OperationalError: (2002, &quot;Can&#39;t connect to local MySQL server through socket &#39;/var/lib/mysql/mysql.sock&#39; (2)&quot;)</code></p>
+<p>默认MySQLdb会在/var/lib/mysql 寻找sock，由于服务器的安装位置不是这里，查找mysql.sock发现在/tmp 目录下，创建MySQLdb连接时，指定unix_sock = /tmp/mysql.sock就可以连接了</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

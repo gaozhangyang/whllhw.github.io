@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="PE维护工具"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">PE维护工具</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jax</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-16</span>
+            <span class="time">17:15:16</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/PE/">#PE</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <blockquote>
+<p>简要记录下了WinPE系统维护盘使用<br>DiskGenis使用,Ghost使用，虚拟机快照<br>分区格式的区别</p>
+</blockquote>
+<a id="more"></a>
+<p>#1.DiskGenis使用</p>
+<hr>
+<p>##界面如图所示</p>
+<ul>
+<li><img src="http://i.imgur.com/3h2tWpz.png" alt=""><br>##选择新建分区<!--more--></li>
+<li><img src="http://i.imgur.com/gNHAdu5.png" alt=""><br>##确认开始分区</li>
+<li><img src="http://i.imgur.com/XwkZBk9.png" alt=""><br>##需要在DOS模式下进行</li>
+<li><img src="http://i.imgur.com/4jKAuNF.png" alt=""><br>##重启后进入DOS将自动分区</li>
+<li><img src="http://i.imgur.com/3yJ2DIr.png" alt=""><br>##完成后进入xp可以看到</li>
+<li><img src="http://i.imgur.com/EpGmIAX.png" alt=""><br>##同理进入Diskgenis选择盘符指派</li>
+<li><img src="http://i.imgur.com/w70vRgl.png" alt=""><br>##格式化时选择分区格式：FAT32</li>
+<li><img src="http://i.imgur.com/gcUHJH4.png" alt=""></li>
+<li><img src="http://i.imgur.com/8bVQps9.png" alt=""></li>
+</ul>
+<hr>
+<p>#2.Ghost使用</p>
+<hr>
+<p>##安装好ghost后重启进入</p>
+<ul>
+<li><img src="http://i.imgur.com/hySBrgu.png" alt=""><br>##按如图选择生成主分区gho文件</li>
+<li><img src="http://i.imgur.com/ZsTsJzJ.png" alt=""><br>##选择硬盘</li>
+<li><img src="http://i.imgur.com/YlbIAsx.png" alt=""><br>##选择克隆分区</li>
+<li><img src="http://i.imgur.com/BBHUBWl.png" alt=""><br>##选择保存位置</li>
+<li><img src="http://i.imgur.com/hCHjrKE.png" alt=""><br>##选择是否压缩</li>
+<li><img src="http://i.imgur.com/8ZtGRwR.png" alt=""><br>##选择YES将开始制作镜像</li>
+<li><img src="http://i.imgur.com/yNRViap.png" alt=""><br>##等待中</li>
+<li><img src="http://i.imgur.com/B7i8Zx7.png" alt=""><br>##已完成，重启</li>
+<li><img src="http://i.imgur.com/Ic4F0Sn.png" alt=""><br>##可以看到Z盘已有GHO文件</li>
+<li><img src="http://i.imgur.com/TBl035W.png" alt=""></li>
+</ul>
+<hr>
+<p>#3.使用快照恢复虚拟机</p>
+<hr>
+<p>##选择昨天备份的快照</p>
+<ul>
+<li><img src="http://i.imgur.com/iwwKSJT.png" alt=""><br>##恢复中</li>
+<li><img src="http://i.imgur.com/9QUvoL9.png" alt=""><br>##完成后，虚拟机如新的一般</li>
+<li><img src="http://i.imgur.com/npjty3T.png" alt=""></li>
+</ul>
+<hr>
+<p>#4.维护工具PE</p>
+<hr>
+<p>##PE安装使用，一键即可</p>
+<ul>
+<li><img src="http://i.imgur.com/m706mwT.png" alt=""><br>##在虚拟机中运行PE</li>
+<li><img src="http://i.imgur.com/ZJaAlhd.png" alt=""></li>
+<li><img src="http://i.imgur.com/foJmI2X.png" alt=""><br>##进入PE后可以借助其附带的软件进行维护</li>
+<li><img src="http://i.imgur.com/aNHFg6Q.jpg" alt=""></li>
+</ul>
+<hr>
+<p>#5.硬盘格式</p>
+<hr>
+<p>##①FAT32</p>
+<ul>
+<li>这种格式采用32位的文件分配表，使其对磁盘的管理能力大大增强，突破了FAT16对每一个分区的容量只有2GB的限制。但在WIN2K&amp;XP系统中，由于系统限制，单个分区最大容量为32GB。由于目前的硬盘生产成本下降，其容量越来越大，运用FAT32的分区格式后，我们可以将一个大硬盘定义成一个分区而不必分为几个分区使用，大大方便了对磁盘的管理。而且，FAT32具有一个最大的优点：在一个不超过8GB的分区中，FAT32分区格式的每个簇容量都固定为4KB，与FAT16相比，可以大大地减少磁盘的浪费，提高磁盘利用率。目前，支持这一磁盘分区格式的操作系统有Win 97、Win 98和Win 2000。但是，这种分区格式也有它的缺点，首先是采用FAT32格式分区的磁盘，由于文件分配表的扩大，运行速度比采用FAT16格式分区的磁盘要慢。另外，由于DOS不支持这种分区格式，所以采用这种分区格式后，就无法再使用DOS系统,还有一点FAT及FAT32格式分区不支持4G及以上文件。<br>##②NTFS</li>
+<li>它的优点是安全性和稳定性极其出色，在使用中不易产生文件碎片。它能对用户的操作进行记录，通过对用户权限进行非常严格的限制，使每个用户只能按照系统赋予的权限进行操作，充分保护了系统与数据的安全。这种格式采用NT核心的纯32位Windows系统才能识别，古老的DOS以及16位32位混编的Win95&amp;98系统是不能识别的。</li>
+<li>NTFS是一个可恢复的文件系统。在NTFS分区上用户很少需要运行磁盘修复程序。NTFS通过使用标准的事务处理日志和恢复技术来保证分区的一致性。NTFS支持对分区、文件夹和文件的压缩。NTFS采用了更小的簇，可以更有效率地管理磁盘空间。<br>##③exFAT</li>
+<li>exFAT（全称Extended File Allocation Table File System，扩展FAT，即扩展文件分配表）是Microsoft在Windows Embeded 6.0（包括Windows CE 6.0、Windows Mobile）中引入的一种适合于闪存的文件系统。对于闪存，NTFS文件系统过于复杂，exFAT更为适用。exFAT只是一个折中的方案，只为U盘而生。<br>##④Ext2</li>
+<li>Ext2是GNU/Linux系统中标准的文件系统。这是Linux中使用最多的一种文件系统，它是专门为Linux设计的，拥有极快的速度和极小的CPU占用率。Ext2既可以用于标准的块设备(如硬盘)，也被应用在软盘等移动存储设备上。<br>##⑤Ext3</li>
+<li>Ext3是Ext2的下一代，也就是保有Ext2的格式之下再加上日志功能。Ext3是一种日志式文件系统（Journal File System),最大的特点是：它会将整个磁盘的写入动作完整的记录在磁盘的某个区域上，以便有需要时回溯追踪。当在某个过程中断时，系统可以根据这些记录直接回溯并重整被中断的部分，重整速度相当快。该分区格式被广泛应用在Linux系统中。<br>##⑥Ext4</li>
+<li>Ext4是一种针对ext3系统的扩展日志式文件系统,是专门为 Linux 开发的原始的扩展文件系统（ext 或 extfs）的第四版。 Linux kernel 自 2.6.28 开始正式支持新的文件系统 Ext4。 Ext4 是 Ext3 的改进版，修改了 Ext3 中部分重要的数据结构，而不仅仅像 Ext3 对 Ext2 那样，只是增加了一个日志功能而已。Ext4 可以提供更佳的性能和可靠性，还有更为丰富的功能。</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

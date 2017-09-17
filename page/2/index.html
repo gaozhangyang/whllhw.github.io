@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jax">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="仰头45℃爆笑"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="仰头45℃爆笑"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://intmain.meundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="仰头45℃爆笑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>仰头45℃爆笑</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">仰头45℃爆笑</p>
+          <p class="subtitle">生活不止眼前的苟且，还有读不懂的诗和到不了的远方</p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/whllhw">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:lhw168@foxmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Home Page Post List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/20103/" class="post-title">
+      SSH无密码登录三步实现
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2017-03-11</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><blockquote>
+<p><em>SSH免密码登录百度上有很多教程，大多是重复的，效果不一定好，Linux字符终端调试起来不一定好受，原来的Ubuntu上没有试过登录，后面就弄不好了。</em><br>借助必应的威力，有了新的发现，借助<strong>ssh-copy-id</strong>，三步实现！！</p>
+</blockquote>
+<h2 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h2><p>生成密钥：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-kengen</div></pre></td></tr></table></figure></p>
+<p>保存在<em>~/.ssh/</em>目录下。</p>
+<h2 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub username@remote-host</div></pre></td></tr></table></figure>
+<p>该命令将公钥文件写到远程机器的 <em>~/.ssh/authorized_key</em></p>
+<h2 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username@remote-host</div></pre></td></tr></table></figure>
+<p>登录！！</p>
+<blockquote>
+<p>原文：</p>
+</blockquote>
+<p><a href="http://blog.chinaunix.netdd/uid-26284395-id-2949145.html">使用ssh-keygen和ssh-copy-id三步实现SSH无密码登录</a></p></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/ubuntu-ssh/">ubuntu,ssh</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/59144/" class="post-title">
+      VMware vSphere Hypervisor (ESXi)虚拟化使用笔记
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2017-02-17</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><h1 id="VMware-vSphere-Hypervisor-ESXi-虚拟化使用"><a href="#VMware-vSphere-Hypervisor-ESXi-虚拟化使用" class="headerlink" title="VMware vSphere Hypervisor (ESXi)虚拟化使用"></a>VMware vSphere Hypervisor (ESXi)虚拟化使用</h1></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/VMware/">VMware</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/44822/" class="post-title">
+      SSH密钥认证的坑
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2017-01-10</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><blockquote>
+<p>对这种坑，无fuck说，在弄腾讯云的时候就会出现，没办法就直接用服务市场的镜像，就解决了<br>在jobsky的服务器(<strong>Centos7</strong>)上不想输密码，SSH配置的时候老出现问题<br><strong>Server refused our key</strong></p>
+</blockquote></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/ubuntu/">ubuntu</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/36564/" class="post-title">
+      解决ubuntu的apt-get由于依赖关系安装失败的问题
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2017-01-10</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><p>安装gnome，KVM失败</p></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/ubuntu/">ubuntu</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/57763/" class="post-title">
+      Linux命令大全
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2016-12-31</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><blockquote>
+<p>直接转载的，没有整理。</p>
+</blockquote></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/Linux-Ubuntu-Centos/">Linux,Ubuntu,Centos</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/56219/" class="post-title">
+      WordPress博客，及虚拟主机
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2016-12-30</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><p>框架博客极简风格，WordPress又有点繁琐，基于学习目的，两个都搭建了。（逃</p></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/nginx-WordPress/">nginx,WordPress</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/32119/" class="post-title">
+      minecraft我的世界服务器
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2016-12-26</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><blockquote>
+<p>腾讯云，按照网上的教程搭建,我的世界服务器：<br>地址：[<a href="http://intmain.me">http://intmain.me</a>]<br>版本：1.7.10</p>
+</blockquote></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/游戏服务器/">游戏服务器</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/22648/" class="post-title">
+      Markdown语法
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2016-12-11</div>
+      <div class="categories">
+        
+          
+
+<a href="/categories/参考文档/">参考文档</a>
+
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><h1 id="Markdown-简介"><a href="#Markdown-简介" class="headerlink" title="Markdown 简介"></a>Markdown 简介</h1><p><img src="http://wenchao-img.qiniudn.com/a53403c34c199fdd759571c2997ed910.png" alt="文章思维导图"></p></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/Markdown/">Markdown</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/16169/" class="post-title">
+      WordPress需要FTP连接问题
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2016-11-20</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><ul>
+<li>用于解决WordPress更新插件时要ftp的情况</li>
+<li>网站文件的权限不对，WordPress无法写入文件（又是权限的锅）</li>
+<li>只需要在wp-config配置文件中加入三行代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">define(&quot;FS_METHOD&quot;,&quot;direct&quot;);</div><div class="line">define(&quot;FS_CHMOD_DIR&quot;,0777);</div><div class="line">define(&quot;FS_CHMOD_FILE&quot;,0777);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>便可解决权限问题。不需要FTP连接。</p></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/WordPress/">WordPress</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/posts/51100/" class="post-title">
+      PE维护工具
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2016-11-16</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo"><blockquote>
+<p>简要记录下了WinPE系统维护盘使用<br>DiskGenis使用,Ghost使用，虚拟机快照<br>分区格式的区别</p>
+</blockquote></div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/PE/">PE</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+              <li class="previous">
+                <a href="/">
+                  <span class="symbol-left">&lt;</span>
+                  <span>PREV</span>
+                </a>
+              </li>
+          
+          
+            <li class="next">
+              <a href="/page/3/">
+                <span>NEXT</span>
+                <span class="symbol-right">&gt;</span>
+              </a>
+            </li>
+          
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
