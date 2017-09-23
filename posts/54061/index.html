@@ -101,7 +101,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-09-21</span>
-            <span class="time">18:50:27</span>
+            <span class="time">19:22:59</span>
           </span>
           
         </div>
@@ -117,12 +117,26 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <h1 id="Selenium-自动化测试框架"><a href="#Selenium-自动化测试框架" class="headerlink" title="Selenium 自动化测试框架"></a>Selenium 自动化测试框架</h1><blockquote>
+          <blockquote>
 <p>比较快速的爬取一些网站，最快就是用这个框架，记录遇到的坑。</p>
 </blockquote>
-<p>查阅的<a href="https://selenium-python-zh.readthedocs.io/en/latest/locating-elements.html" title="中文文档" target="_blank" rel="external">中文文档</a>基本用法简单，但是高级的用法就是英文的，或者没有。这里记录一下。<br><a id="more"></a></p>
+<p>查阅的<a href="https://selenium-python-zh.readthedocs.io/en/latest/locating-elements.html" title="中文文档" target="_blank" rel="external">中文文档</a>基本用法简单，但是高级的用法就是英文的，或者没有。这里记录一下。</p>
+<a id="more"></a>
+<hr>
+<p><code>webdriver.Chrome(&#39;/path/to/chromedriver&#39;)</code></p>
 <ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">加载驱动时要指定路径，不然提示没有找到驱动</div><div class="line">- 在弹出的网页进行查找元素时，要使用</div><div class="line">``driver.switch_to_window(driver.window_handles[-1])``</div><div class="line">切换窗口，不然提示NoSuchElementException</div><div class="line">- driver.page_source返回的是当前渲染后的网页的源码，可以进行保存</div><div class="line">- 获取元素的内容 ```element.text```返回str类型，包含当前元素下所有的内容</div><div class="line">- 隐式等待，可以自制一个装饰器，重复调用</div></pre></td></tr></table></figure>
+<li>加载驱动时要指定路径，不然提示没有找到驱动</li>
+<li>在弹出的网页进行查找元素时，要使用切换窗口，不然提示NoSuchElementException</li>
+</ul>
+<p><code>driver.switch_to_window(driver.window_handles[-1])</code></p>
+<ul>
+<li>driver.page_source返回的是当前渲染后的网页的源码，可以进行保存</li>
+<li>获取元素的内容 <code>element.text</code>返回str类型，包含当前元素下所有的内容</li>
+<li>最后一个是json模块的锅：输出json到文件时居然还是\u开头的unicode，python3 还有编码问题？后面终于找到还要附加参数，心态爆炸</li>
+</ul>
+<p><code>f.write(json.dumps(data,indent=4,ensure_ascii=False))</code></p>
+<ul>
+<li><p>隐式等待，可以自制一个装饰器，重复调用</p>
 <p>  from selenium.webdriver.common.by import By<br>  from selenium.webdriver.support import expected_conditions as EC<br>  from selenium.webdriver.support.ui import WebDriverWait<br>  def wait(func):</p>
 <pre><code>def wrapper(*args,**kw):
     return WebDriverWait(driver, 30).until(func(*args,**kw))
@@ -131,7 +145,7 @@ return wrapper
 <pre><code>return  EC.presence_of_element_located((By.XPATH, xpath))
 </code></pre><p>  @wait<br>  def find_elements_by_xpath(xpath):</p>
 <pre><code>return EC.presence_of_elements_located((By.XPATH, xpath))
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- 最后一个是json模块的锅：输出json到文件时居然还是\u开头的unicode，python3 还有编码问题？后面终于找到还要附加参数，心态爆炸</div><div class="line">```f.write(json.dumps(data,indent=4,ensure_ascii=False))</div></pre></td></tr></table></figure></li>
+</code></pre></li>
 </ul>
 
         </div>
