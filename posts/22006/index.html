@@ -101,7 +101,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-09-17</span>
-            <span class="time">19:22:59</span>
+            <span class="time">15:18:32</span>
           </span>
           
         </div>
@@ -117,22 +117,7 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <h1 id="使用Flask-中遇到的Python2-编码问题"><a href="#使用Flask-中遇到的Python2-编码问题" class="headerlink" title="使用Flask 中遇到的Python2 编码问题"></a>使用Flask 中遇到的Python2 编码问题</h1><p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<p>=======</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>dade94cfd1abc93889060ce2b5e11684262c12b0</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+          <h1 id="使用Flask-中遇到的Python2-编码问题"><a href="#使用Flask-中遇到的Python2-编码问题" class="headerlink" title="使用Flask 中遇到的Python2 编码问题"></a>使用Flask 中遇到的Python2 编码问题</h1><blockquote>
 <p> python2 的编码问题一直被开发者诟病，进行一些字符工作是确实会有点麻烦，而且新手不熟悉编码，更会踩坑里。</p>
 </blockquote>
 <p>开始前建议阅读 <a href="http://selfboot.cn/2016/12/28/py_encode_decode/" target="_blank" rel="external">Python2.x 字符编码终极指南</a>，或者搜索一下就有很多文章。</p>
@@ -145,8 +130,7 @@
 <li>MySQLdb 连接指定charset=’utf8’，插入的代码如下</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g.db.execute(<span class="string">'insert into entries (title, text) values (&#123;&#125;, &#123;&#125;)'</span>.format(request.form[<span class="string">'title'</span>].encode(<span class="string">'utf-8'</span>), request.form[<span class="string">'text'</span>].encode(<span class="string">'utf-8'</span>)))</div></pre></td></tr></table></figure>
-<p>​    request.form[‘title’] 的类型是Unicode，encode后应该就可以变成str了，可是</p>
-<p>提示<code>OperationalError: (1054, &quot;Unknown column &#39;abc&#39; in &#39;field list&#39;&quot;)</code>英文都插入不了，然后经Stack Overflow启发，改动 { } =&gt; “{ }”，然后就可以运行了。。坑死了。</p>
+<p>request.form[‘title’] 的类型是Unicode，encode后应该就可以变成str了，可是<br>提示<code>OperationalError: (1054, &quot;Unknown column &#39;abc&#39; in &#39;field list&#39;&quot;)</code>英文都插入不了，然后经Stack Overflow启发，改动 { } =&gt; “{ }”，然后就可以运行了。。坑死了。</p>
 <p>还有一个坑：<code>OperationalError: (2002, &quot;Can&#39;t connect to local MySQL server through socket &#39;/var/lib/mysql/mysql.sock&#39; (2)&quot;)</code></p>
 <p>默认MySQLdb会在/var/lib/mysql 寻找sock，由于服务器的安装位置不是这里，查找mysql.sock发现在/tmp 目录下，创建MySQLdb连接时，指定unix_sock = /tmp/mysql.sock就可以连接了</p>
 
